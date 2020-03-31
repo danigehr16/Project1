@@ -1,11 +1,16 @@
 #tp-table th,
-        td {
-            display: inline-block;
-            width: 16.575%;
-        }
+td {
+    display: inline-block;
+    width: 16.575%;
+}
 
+#wipe {
+    font-family: 'Lobster', cursive;
+}
 
-
+#eat {
+    font-family: 'Spicy Rice', cursive;
+}
 
 .speech-bubble {
     background-color: #f8f8f8;
@@ -31,11 +36,51 @@
     height: 70px;
 }
 
+#body {
+    background-color: lightcyan;
+}
+
 #bubbleWords {
     font-size: medium;
     font-family: 'Spicy Rice', cursive;
     margin-bottom: 3px;
 }
-.navbar-light{
-    background-color: bisque;
+
+
+#add {
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-color: black;
+    background-image: url(tp.jpg);
+
+}
+
+.col-md-12 {
+    padding-left: 0px;
+}
+
+
+.col-md-1 {
+    clear: left;
+}
+
+
+
+.card-header {
+    background: transparent;
+    font-family: 'Frijole', cursive;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.col-md-12 {
+    align-items: center;
+
+}
+
+#card1 {
+    width: 800px;
 }
