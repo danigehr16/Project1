@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="Images/tpicon.png">
+    <link rel="icon" href="assets/Images/tpicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Toilet-Paper_Finder</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -19,16 +22,28 @@
     <!-- Moment.js Reference -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
-    <style>
-        #tp-table th,
-        td {
-            display: inline-block;
-            width: 16.575%;
-        }
-    </style>
+    <!-- googel fonts reference -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Spicy+Rice&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+
+    <!-- Just an image -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">
+            <img id="tpcute"
+                src="https://cdn.clipart.email/1e509a3a31eb2ccbdf22efce9b263b42_crab-clipart-animated-gif-crab-animated-gif-transparent-free-for-_800-800.gif#.XoJ_d2YKQxU.link"
+                width="30" height="30" alt="">
+        </a>
+        <div class="speech-bubble">
+            <div class="arrow left"></div>
+            <p id="bubbleWords">Hello and welcome! Let me help you find some toliet paper!!</p>
+
+
+        </div>
+
+    </nav>
 
     <!-- Store-Finder -->
     <div class="container">
@@ -95,7 +110,8 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="app.js"></script>
+    <script src="assets/javascript/app.js"></script>
 
 </body>
+
 </html>

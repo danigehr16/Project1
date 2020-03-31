@@ -1,0 +1,41 @@
+#tp-table th,
+        td {
+            display: inline-block;
+            width: 16.575%;
+        }
+
+
+
+
+.speech-bubble {
+    background-color: #f8f8f8;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    margin-left: 70px;
+    height: 55px;
+    text-align: center;
+    padding-left: 0px;
+    margin-right: 40px;
+    margin-bottom: 3px;
+    box-shadow: black 2px 2px;
+
+}
+
+#tpcute {
+    float: left;
+    width: 70px;
+    height: 70px;
+}
+
+#bubbleWords {
+    font-size: medium;
+    font-family: 'Spicy Rice', cursive;
+    margin-bottom: 3px;
+}
+.navbar-light{
+    background-color: bisque;
+}
