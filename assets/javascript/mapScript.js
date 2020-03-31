@@ -1,8 +1,4 @@
 /**
- * Calculates and displays the address details of 200 S Mathilda Ave, Sunnyvale, CA
- * based on a free-form text
- *
- *
  * A full list of available request parameters can be found in the Geocoder API documentation.
  * see: http://developer.here.com/rest-apis/documentation/geocoder/topics/resource-geocode.html
  *
@@ -11,6 +7,7 @@
 function geocode(platform) {
   var geocoder = platform.getGeocodingService(),
     geocodingParameters = {
+      //this will need to be updated for the users input
       searchText: '6203 Grey Friars Terrace, Chalfont PA, 18914',
       jsonattributes : 1
     };
@@ -29,14 +26,11 @@ function geocode(platform) {
  */
 function onSuccess(result) {
   var locations = result.response.view[0].result;
- /*
-  * The styling of the geocoding response on the map is entirely under the developer's control.
-  * A representitive styling can be found the full JS + HTML code of this example
-  * in the functions below:
-  */
+// this is where we will add the location of the stores
+//in addition we will add the location code from the other google doc.
   addLocationsToMap(locations);
   addLocationsToPanel(locations);
-  // ... etc.
+  
 }
 
 /**
@@ -58,10 +52,10 @@ var platform = new H.service.Platform({
 });
 var defaultLayers = platform.createDefaultLayers();
 
-//Step 2: initialize a map - this map is centered over California
+//this map is centered over the US, kansas more specifically
 var map = new H.Map(document.getElementById('map'),
   defaultLayers.vector.normal.map,{
-  center: {lat:40.4108, lng:-75.2479},
+  center: {lat:39.381266, lng:-97.922211},
   zoom: 15,
   pixelRatio: window.devicePixelRatio || 1
 });
@@ -79,6 +73,7 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 // Hold a reference to any infobubble opened
+//we can change this icon to anything in the correct folder
 var bubble;
 
 /**
@@ -120,10 +115,12 @@ function addLocationsToPanel(locations){
         address = locations[i].location.address,
         content =  '<strong style="font-size: large;">' + address.label  + '</strong></br>';
         position = {
+          //coordinates for locations
           lat: locations[i].location.displayPosition.latitude,
           lng: locations[i].location.displayPosition.longitude
         };
 
+        //house address for user
       content += '<strong>houseNumber:</strong> ' + address.houseNumber + '<br/>';
       content += '<strong>street:</strong> '  + address.street + '<br/>';
       content += '<strong>district:</strong> '  + address.district + '<br/>';
@@ -156,6 +153,8 @@ function addLocationsToMap(locations){
     i;
 
   // Add a marker for each location found
+  // this is where we can add a little tp icon
+
   for (i = 0;  i < locations.length; i += 1) {
     position = {
       lat: locations[i].location.displayPosition.latitude,
