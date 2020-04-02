@@ -59,3 +59,37 @@ database.ref().on("child_added", function (childSnapshot) {
     // Append the new row to the table
     $("#tp-table > tbody").append(newRow);
 });
+//====================================================================================================================
+//APIs
+      var searchProduct = function(product) {
+        var queryProdURL = "https://api.wegmans.io/products/search?query=" + product + "&api-version=2018-10-18";
+        $.ajax({
+          url: queryProdURL,
+          method: "GET",
+          timeout: 0,
+          headers: {
+            "Subscription-Key": "C455d00cb0f64e238a5282d75921f27e"
+          }
+        }).then(function(response) {
+          console.log(response);
+
+          console.log(response.results[0]._links[1].href);
+          console.log(response.results[0]._links[2].href);
+          console.log(response.results[0]._links[3].href);
+          var storeHref = response.results[0]._links[0];
+          console.log(storeHref);
+        });
+      };
+      searchProduct("toilet-paper");
+////////////////////////////////////
+      var store = {
+        "url": "https://api.wegmans.io/stores?Subscription-Key=C455d00cb0f64e238a5282d75921f27e&api-version=2018-10-18",
+        "method": "GET",
+        "timeout": 0,
+      };
+      
+      $.ajax(store).done(function (response) {
+        console.log(response);
+        var a = response.stores[0]._links[0].href;
+        console.log(a);
+      });
