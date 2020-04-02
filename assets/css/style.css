@@ -95,6 +95,14 @@ td {
     background: grey;
 }
 
+.page-header {
+    font-family: 'Spicy Rice', cursive;
+    text-align: center;
+}
+#mapHeader {
+    font-size: xx-large;
+}
+
 #geocode #panel {
     display: block;
     width: 95%;
