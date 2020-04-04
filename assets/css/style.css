@@ -52,12 +52,16 @@ td {
     padding-left: 30px;
     padding-right: 30px;
     border-color: black;
-    background-image: url(//assets/Images/tp.jpg);
+    background-image: url(../Images/tp.jpg);
+    align-items: center;
 
 }
 
 .col-md-12 {
-    padding-left: 0px;
+    padding-left: 30px;
+}
+#addTP {
+    padding-left: 500px;
 }
 
 
@@ -68,23 +72,53 @@ td {
 
 
 .card-header {
-    background: transparent;
+    background:transparent;
     font-family: 'Frijole', cursive;
+}
+.card-body {
+    padding: 50px;
 }
 
 .jumbotron {
     text-align: center;
 }
 
-.col-md-12 {
-    align-items: center;
-
-}
 
 #card1 {
     width: 800px;
+    padding-left: 40px;
+    text-align: center;
 }
+ 
 
+
+
+#charm {
+    float: left;
+    padding: 5px;
+    clear: right;
+}
+#pup {
+    float: right;
+    padding: 5px;
+}
+#quilted {
+    float: right;
+    padding: 5px;
+}
+#scott {
+    float: right;
+    padding: 5px;
+}
+#weg {
+    float: right;
+    padding: 5px;
+    
+
+}
+.form-group {
+    padding-top: 20px;
+}
 
 /* from devHere.css */
 #geocode #map {
@@ -93,6 +127,14 @@ td {
     margin-bottom: 3px;
     height: 450px;
     background: grey;
+}
+
+.page-header {
+    font-family: 'Spicy Rice', cursive;
+    text-align: center;
+}
+#mapHeader {
+    font-size: xx-large;
 }
 
 #geocode #panel {
@@ -105,8 +147,6 @@ td {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 }
-
-
 /* from mapTemplate.css */
 @font-face{
     font-family:'Fira Sans';
@@ -559,3 +599,234 @@ strong{
 b, strong {
     color: black;
 }
+
+
+
+
+
+
+
+@media screen 
+and (min-device-width: 300px) {
+    #cool {
+        width: 310px;
+        height: 100px;
+        padding-right: 20px;
+    }
+    #eat {
+        padding-right: 40px;
+    }
+    #addTP {
+        float: left;
+        padding-left: 0px;
+        padding-right: 100px;
+        width: 390px;
+    }
+    #weg {
+        float: left;
+        width: 30px;
+        height: 30px;
+        
+    }
+    #charm {
+        float: right;
+        width: 30px;
+        height: 30px;
+    }
+    #pup {
+        float: right;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        padding-left: 20px;
+    }
+    #quilted {
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        margin-right: 30px;
+        padding-right: 10px;
+    }
+    #scott {
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        margin-top: 40px;
+        padding-right: 20px;
+    }
+
+   
+    #address-input {
+        margin-top: 10px;
+    }
+    #address {
+        margin-top: 150px;
+    }
+    #card1 {
+        width: 350px;
+    }
+    .table {
+        width: 300px;
+        padding: 0px;
+        float: left;
+        
+        
+    }
+    #tableText {
+        font-size: 6px;   
+    }
+    #cardB {
+        padding: 0px;
+    }
+}
+    @media screen 
+    and (min-device-width: 736px){
+        #cool {
+            width: 500px;
+            height: 100px;
+            padding-right: 20px;
+        }
+        #eat {
+            padding-right: 40px;
+        }
+        #addTP {
+            float: left;
+            padding-left: 0px;
+            padding-right: 100px; 
+        }
+        #weg {
+            float: left;
+            width: 70px;
+            height: 30px;
+            
+        }
+        #charm {
+            float: right;
+            width: 30px;
+            height: 30px;
+        }
+        #pup {
+            float: right;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            padding-left: 20px;
+        }
+        #quilted {
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            margin-right: 30px;
+            padding-right: 10px;
+        }
+        #scott {
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            margin-top: 40px;
+            padding-right: 20px;
+        }
+       
+        #address-input {
+            margin-top: 10px;
+        }
+        #address {
+            margin-top: 150px;
+        }
+        #card1 {
+            width: 600px;
+        }
+        .table {
+            width: 500px;
+            padding: 0px;
+            float: left;   
+        }
+        #tableText {
+            font-size: 10px;   
+        }
+        #cardB {
+            padding: 0px;
+        }
+    }
+
+    @media screen
+    and (min-device-width: 1000px){
+        #cool {
+            width: 700px;
+            height: 200px;
+            padding-right: 20px;
+        }
+        #eat {
+            padding-right: 40px;
+        }
+        #addTP {
+            float: left;
+            padding-left: 170px;
+            padding-right: 100px;
+            width: auto;
+           
+        }
+
+        #charm {
+            float: left;
+           margin-right: 10px;
+            clear: right;
+            height: 70px;
+            width: 70px;
+        }
+        #pup {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+        }
+        #quilted {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+            margin-left: 10px;
+        }
+        #scott {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+            margin-left: 5px;
+        }
+        #weg {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+            margin-left: 5px;
+            
+        
+        }
+        
+       
+        #address-input {
+            margin-top: 10px;
+        }
+        #address {
+            margin-top: 70px;
+        }
+        #card1 {
+            width: 900px;
+            padding-left: 30px;
+        }
+        .table {
+            width: 800px;
+            float: left;   
+        }
+        #tableText {
+            font-size: 20px;   
+        }
+        #cardB {
+            padding: 0px;
+        }
+    }

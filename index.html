@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="assets/Images/tpicon.png">
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Toilet-Paper_Finder</title>
 
     <!-- Bootstrap -->
@@ -14,7 +13,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -26,7 +26,7 @@
     <!-- google fonts reference -->
     <link href="https://fonts.googleapis.com/css?family=Lobster|Spicy+Rice|Frijole&display=swap" rel="stylesheet">
 
-    <!-- -->
+
 </head>
 
 <body id="body">
@@ -46,33 +46,80 @@
 
     </nav>
 
+
     <!-- Store-Finder -->
     <div class="container">
 
         <!-- Jumbotron -->
         <div class="jumbotron" style="background-color: transparent;">
-            <a href="https://cooltext.com"><img src="https://images.cooltext.com/5397319.png" width="750" height="150"
+            <a href="https://cooltext.com"><img id="cool" src="https://images.cooltext.com/5397319.png" width="750" height="150"
                     alt="Need a Wipe?" /></a>
-            <br /><a href="https://cooltext.com"></a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3534419389"></a>
+            <br /><a  href="https://cooltext.com"></a> - <a href="https://cooltext.com/Edit-Logo?LogoID=3534419389"></a>
 
             <h3 id="eat" class="text-center">You cant eat toilet paper in a survival situation</h3>
         </div>
+
+        <hr>
 
         <div class="row">
 
             <div class="col-md-12">
 
+
+
+                <div id="addTP" class="col-md-12">
+
+                    <!-- Add TP SKU  -->
+                    <div id="add" class="card mb-4">
+                        <div class="card-header">Add TP Brand</div>
+                        <div class="card-body">
+                            <!-- Entry Form -->
+                            <!-- Add TP Brand  -->
+                            <form>
+                                <div>
+                                    <form id="weg" action="/action_page.php">
+                                        <input type="image" src="assets/Images/wegans.jpg" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                    <form id="charm" action="/action_page.php">
+                                        <input type="image" src="assets/Images/bear.png" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                    <form id="pup" action="/action_page.php">
+                                        <input type="image" src="assets/Images/cottonellepup.jpg" alt="Submit"
+                                            width="70" height="70">
+                                    </form>
+                                    <form id="quilted" action="/action_page.php">
+                                        <input type="image" src="assets/Images/quilted.png" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                    <form id="scott" action="/action_page.php">
+                                        <input type="image" src="assets/Images/scott.jpg" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                </div>
+                                <div class="form-group">
+                                    <label id="address" for="address-input">Address</label>
+                                    <input class="form-control" id="address-input" placeholder="" type="text">
+                                </div>
+                                <button class="btn btn-primary float-left" id="add-tp-btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Current TP Locations-->
-                <div id="card1" class="card mb-4">
+                <div id="card1" class="card mb-6">
                     <div id="locate" class="card-header">Current TP Locations</div>
-                    <div class="card-body">
+                    <div id="cardB" class="card-body">
                         <table class="table table-sm table-hover" id='tp-table'>
                             <thead>
-                                <tr>
-                                    <th scope="col">Store Name</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">SKU</th>
-                                    <th scope="col">Availibility</th>
+                                <tr id="tableText">
+                                    <th id="name" scope="col">Store Name</th>
+                                    <th id="address" scope="col">Address</th>
+                                    <th id="distance" scope="col">Distance</th>
+                                    <th id="price" scope="col">Price</th>
+                                    <th id="availability" scope="col">Availability</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,35 +128,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
-
-                    <!-- Add TP SKU  -->
-                    <div id="add" class="card mb-4">
-                        <div class="card-header">Add TP Brand</div>
-                        <div class="card-body">
-                            <!-- Entry Form -->
-                            <form>
-                                <div class="form-group">
-                                    <label for="store-name-input">Store Name</label>
-                                    <input class="form-control" id="store-name-input" placeholder="" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label for="address-input">Address</label>
-                                    <input class="form-control" id="address-input" placeholder="" type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label for="sku-input">SKU</label>
-                                    <input class="form-control" id="sku-input" placeholder="" type="text">
-                                </div>
-                                <button class="btn btn-primary float-left" id="add-tp-btn">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
 
+        </div>
     </div>
+
+
 
     <!-- JavaScript -->
     <script src="assets/javascript/app.js"></script>
