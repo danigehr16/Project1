@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="assets/Images/tpicon.png">
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Toilet-Paper_Finder</title>
 
     <!-- Bootstrap -->
@@ -14,7 +13,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link href="assets/css/style.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
@@ -26,7 +26,7 @@
     <!-- google fonts reference -->
     <link href="https://fonts.googleapis.com/css?family=Lobster|Spicy+Rice|Frijole&display=swap" rel="stylesheet">
 
-    
+
 </head>
 
 <body id="body">
@@ -65,9 +65,52 @@
 
             <div class="col-md-12">
 
+
+
+                <div id="addTP" class="col-md-12">
+
+                    <!-- Add TP SKU  -->
+                    <div id="add" class="card mb-4">
+                        <div class="card-header">Add TP Brand</div>
+                        <div class="card-body">
+                            <!-- Entry Form -->
+                            <form>
+                                <div>
+                                    <form id="charm" action="/action_page.php">
+                                        <input type="image" src="assets/Images/bear.png" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                    <form id="pup" action="/action_page.php">
+                                        <input type="image" src="assets/Images/cottonellepup.jpg" alt="Submit"
+                                            width="70" height="70">
+                                    </form>
+                                    <form id="quilted" action="/action_page.php">
+                                        <input type="image" src="assets/Images/quilted.png" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                    <form id="angel" action="/action_page.php">
+                                        <input type="image" src="assets/Images/angel.jpg" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address-input">Address</label>
+                                    <input class="form-control" id="address-input" placeholder="" type="text">
+                                </div>
+                                <button class="btn btn-primary float-left" id="add-tp-btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current TP Locations-->
+                <div id="card1" class="card mb-4">
+                    <div id="locate" class="card-header">Current TP Locations</div>
+                  
                 <!-- Add TP Brand  -->
                 <div id="add" class="card mb-4">
                     <div class="card-header">Add TP Brand</div>
+
                     <div class="card-body">
                         <!-- Entry Form -->
                         <form>
@@ -109,6 +152,7 @@
                     </div>
 
                 </div>
+
             </div>
         </div>
 
