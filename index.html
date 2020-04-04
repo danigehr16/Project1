@@ -74,8 +74,13 @@
                         <div class="card-header">Add TP Brand</div>
                         <div class="card-body">
                             <!-- Entry Form -->
+                            <!-- Add TP Brand  -->
                             <form>
                                 <div>
+                                    <form id="weg" action="/action_page.php">
+                                        <input type="image" src="assets/Images/wegans.jpg" alt="Submit" width="70"
+                                            height="70">
+                                    </form>
                                     <form id="charm" action="/action_page.php">
                                         <input type="image" src="assets/Images/bear.png" alt="Submit" width="70"
                                             height="70">
@@ -88,8 +93,8 @@
                                         <input type="image" src="assets/Images/quilted.png" alt="Submit" width="70"
                                             height="70">
                                     </form>
-                                    <form id="angel" action="/action_page.php">
-                                        <input type="image" src="assets/Images/angel.jpg" alt="Submit" width="70"
+                                    <form id="scott" action="/action_page.php">
+                                        <input type="image" src="assets/Images/scott.jpg" alt="Submit" width="70"
                                             height="70">
                                     </form>
                                 </div>
@@ -104,59 +109,31 @@
                 </div>
 
                 <!-- Current TP Locations-->
-                <div id="card1" class="card mb-4">
+                <div id="card1" class="card mb-6">
                     <div id="locate" class="card-header">Current TP Locations</div>
-                  
-                <!-- Add TP Brand  -->
-                <div id="add" class="card mb-4">
-                    <div class="card-header">Add TP Brand</div>
-
                     <div class="card-body">
-                        <!-- Entry Form -->
-                        <form>
-                            <button class="btn btn-secondary float-left" id="add-wegmans-btn">Wegmans</button>
-                            <button class="btn btn-secondary float-left" id="add-charmin-btn">Charmin</button>
-                            <button class="btn btn-secondary float-left" id="add-cottonelle-btn">Cottonelle</button>
-                            <button class="btn btn-secondary float-left" id="add-royale-btn">Royale</button>
-                            <button class="btn btn-secondary float-left" id="add-scott-btn">Scott</button>
-                            <div class="form-group">
-                                <label for="address-input">Address</label>
-                                <input class="form-control" id="address-input" placeholder="Your Home Address"
-                                    type="text">
-                            </div>
-                            <button class="btn btn-primary float-left" id="add-tp-btn">Submit</button>
-                        </form>
+                        <table class="table table-sm table-hover" id='tp-table'>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Store Name</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Distance</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Availability</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-
-                <div class="col-md-12">
-
-                    <!-- Current TP Locations-->
-                    <div id="card1" class="card mb-6">
-                        <div id="locate" class="card-header">Current TP Locations</div>
-                        <div class="card-body">
-                            <table class="table table-sm table-hover" id='tp-table'>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Store Name</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">Distance</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Availability</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
-        </div>
 
+        </div>
     </div>
+
+
 
     <!-- JavaScript -->
     <script src="assets/javascript/app.js"></script>

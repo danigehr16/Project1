@@ -92,6 +92,34 @@ td {
  
 
 
+
+#charm {
+    float: left;
+    padding: 5px;
+    clear: right;
+}
+#pup {
+    float: right;
+    padding: 5px;
+}
+#quilted {
+    float: right;
+    padding: 5px;
+}
+#scott {
+    float: right;
+    padding: 5px;
+}
+#weg {
+    float: right;
+    padding: 5px;
+    
+
+}
+.form-group {
+    padding-top: 20px;
+}
+
 /* from devHere.css */
 #geocode #map {
     display: block;
@@ -119,27 +147,6 @@ td {
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 }
-#charm {
-    float: left;
-    padding: 3px;
-    clear: right;
-}
-#pup {
-    float: right;
-    padding: 3px;
-}
-#quilted {
-    float: right;
-    padding: 3px;
-}
-#angel {
-    float: right;
-    padding: 3px;
-}
-.form-group {
-    padding-top: 20px;
-}
-
 /* from mapTemplate.css */
 @font-face{
     font-family:'Fira Sans';
