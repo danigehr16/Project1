@@ -26,6 +26,7 @@ function geocode(platform) {
  */
 function onSuccess(result) {
   var locations = result.response.view[0].result;
+  console.log(locations)
 // this is where we will add the location of the stores
 //in addition we will add the location code from the other google doc.
   addLocationsToMap(locations);
