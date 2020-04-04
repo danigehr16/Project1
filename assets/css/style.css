@@ -603,104 +603,230 @@ b, strong {
 
 
 
-/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 
-/* Portrait and Landscape */
-/* @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
 
-} */ 
 
-/* Portrait */
-/* @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) { 
+@media screen 
+and (min-device-width: 300px) {
+    #cool {
+        width: 310px;
+        height: 100px;
+        padding-right: 20px;
+    }
+    #eat {
+        padding-right: 40px;
+    }
+    #addTP {
+        float: left;
+        padding-left: 0px;
+        padding-right: 100px;
+        width: 390px;
+    }
+    #weg {
+        float: left;
+        width: 30px;
+        height: 30px;
+        
+    }
+    #charm {
+        float: right;
+        width: 30px;
+        height: 30px;
+    }
+    #pup {
+        float: right;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        padding-left: 20px;
+    }
+    #quilted {
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        margin-right: 30px;
+        padding-right: 10px;
+    }
+    #scott {
+        float: left;
+        width: 30px;
+        height: 30px;
+        margin: 10px;
+        margin-top: 40px;
+        padding-right: 20px;
+    }
 
-} */
+   
+    #address-input {
+        margin-top: 10px;
+    }
+    #address {
+        margin-top: 150px;
+    }
+    #card1 {
+        width: 350px;
+    }
+    .table {
+        width: 300px;
+        padding: 0px;
+        float: left;
+        
+        
+    }
+    #tableText {
+        font-size: 6px;   
+    }
+    #cardB {
+        padding: 0px;
+    }
+}
+    @media screen 
+    and (min-device-width: 736px){
+        #cool {
+            width: 500px;
+            height: 100px;
+            padding-right: 20px;
+        }
+        #eat {
+            padding-right: 40px;
+        }
+        #addTP {
+            float: left;
+            padding-left: 0px;
+            padding-right: 100px; 
+        }
+        #weg {
+            float: left;
+            width: 70px;
+            height: 30px;
+            
+        }
+        #charm {
+            float: right;
+            width: 30px;
+            height: 30px;
+        }
+        #pup {
+            float: right;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            padding-left: 20px;
+        }
+        #quilted {
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            margin-right: 30px;
+            padding-right: 10px;
+        }
+        #scott {
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 10px;
+            margin-top: 40px;
+            padding-right: 20px;
+        }
+       
+        #address-input {
+            margin-top: 10px;
+        }
+        #address {
+            margin-top: 150px;
+        }
+        #card1 {
+            width: 600px;
+        }
+        .table {
+            width: 500px;
+            padding: 0px;
+            float: left;   
+        }
+        #tableText {
+            font-size: 10px;   
+        }
+        #cardB {
+            padding: 0px;
+        }
+    }
 
-/* Landscape */
-/* @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: landscape) { 
+    @media screen
+    and (min-device-width: 1000px){
+        #cool {
+            width: 700px;
+            height: 200px;
+            padding-right: 20px;
+        }
+        #eat {
+            padding-right: 40px;
+        }
+        #addTP {
+            float: left;
+            padding-left: 170px;
+            padding-right: 100px;
+            width: auto;
+           
+        }
 
-} */
-
-/* ----------- iPhone 6+, 7+ and 8+ ----------- */
-
-/* Portrait and Landscape */
-/* @media only screen 
-  and (min-device-width: 414px) 
-  and (max-device-width: 736px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
-
-} */
-
-/* Portrait */
-/* @media only screen 
-  and (min-device-width: 414px) 
-  and (max-device-width: 736px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: portrait) { 
-
-} */
-
-/* Landscape */
-/* @media only screen 
-  and (min-device-width: 414px) 
-  and (max-device-width: 736px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: landscape) { 
-
-} */
-
-/* ----------- iPhone X ----------- */
-
-/* Portrait and Landscape */
-/* @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
-
-} */
-
-/* Portrait */
-/* @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: portrait) { 
-
-} */
-
-/* Landscape */
-/* @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: landscape) { 
-
-} */
-
-/* ----------- Non-Retina Screens ----------- */
-/* @media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
-      .jumbotron {
-          
-      }
-} */
-
-/* ----------- Retina Screens ----------- */
-/* @media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (min-resolution: 192dpi) { 
-} */
+        #charm {
+            float: left;
+           margin-right: 10px;
+            clear: right;
+            height: 70px;
+            width: 70px;
+        }
+        #pup {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+        }
+        #quilted {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+            margin-left: 10px;
+        }
+        #scott {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+            margin-left: 5px;
+        }
+        #weg {
+            float: right;
+            height: 70px;
+            width: 70px;
+            margin: 0px;
+            margin-left: 5px;
+            
+        
+        }
+        
+       
+        #address-input {
+            margin-top: 10px;
+        }
+        #address {
+            margin-top: 70px;
+        }
+        #card1 {
+            width: 900px;
+            padding-left: 30px;
+        }
+        .table {
+            width: 800px;
+            float: left;   
+        }
+        #tableText {
+            font-size: 20px;   
+        }
+        #cardB {
+            padding: 0px;
+        }
+    }
