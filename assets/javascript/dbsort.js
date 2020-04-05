@@ -1,4 +1,4 @@
-var stores = [{
+const stores = [{
     "_links": [{
         "href": "/stores/1?api-version=2018-10-18",
         "rel": "self",
@@ -1244,11 +1244,28 @@ var stores = [{
 }]
 
 //console.log(JSON.stringify(stores))
-
-var ordered = {};
-Object.keys(stores).sort().forEach(function (latitude) {
-    ordered[latitude] = stores[latitude];
+/*
+const sortByLong = stores.sort(function(a,b){
+    var q = a.longitude - b.longitude;
+    var w = a.latitude - b.latitude;
+    return [q, w];
+});
+*/
+const sortByLat = stores.sort(function(c,d){
+    return c.latitude - d.latitude;
 });
 
-console.log(JSON.stringify(ordered));
-// → '{"a":"baz","b":"foo","c":"bar"}'
+//console.log(sortByLong);
+console.log(sortByLat);
+
+//console.log(JSON.stringify(sortByLong));
+//console.log(JSON.stringify(sortByLat));
+
+//const sortByLong = stores.sort(function(a,b,c,d){
+    //return a.longitude - b.longitude;
+    //return c.latitude - d.latitude;
+//});
+//const sortByLat = stores.sort(function(c,d){
+  //  return c.latitude - d.latitude;
+//});
+
