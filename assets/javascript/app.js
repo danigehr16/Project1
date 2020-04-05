@@ -5,6 +5,9 @@ sort store coords and store
 find closest 10 stores to user coords
 
 send second api request to geo with user address and 10 markers with closest stores
+//sort data by long and lat in numerical order
+//match users input to sorted coords
+//find i and add i-2, i-1, i, i+1, i+2
 */
 
 // 1. Initialize Firebase
@@ -22,8 +25,6 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-
-
 // 2. Button for adding TP LL
 $("#add-tp-btn").on("click", function (event) {
   event.preventDefault();
@@ -31,8 +32,6 @@ $("#add-tp-btn").on("click", function (event) {
   function getLatLon(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    console.log("Latitude is " + latitude);
-    console.log("Longitude is " + longitude);
 
     var newTPLL = {
       lat: latitude,
@@ -40,31 +39,11 @@ $("#add-tp-btn").on("click", function (event) {
     };
     // Uploads tp data to the database
     database.ref().push(newTPLL);
-
-    alert("TP LL successfully added");
+    alert("latitude & longitude successfully added");
   }
-
   navigator.geolocation.getCurrentPosition(getLatLon);
 
 });
-
-//addition of store data to Database ***************************************************
-// var store = {
-//   "url": "https://api.wegmans.io/stores?Subscription-Key=C455d00cb0f64e238a5282d75921f27e&api-version=2018-10-18",
-//   "method": "GET",
-//   "timeout": 0,
-// };
-
-// $.ajax(store).done(function (response) {
-//   console.log(response);
-//   database.ref().push(response);
-//   // for (i = 0; i < 6; i++) {
-//   //   response.stores[i].latitude;
-//   //   response.stores[i].longitude;
-//   //   console.log(response.stores[i].latitude);
-//   //   console.log(response.stores[i].longitude);
-//   // }
-// });
 
 
 // 3. Create Firebase event for adding TP to the database and a row in the html when a user adds an entry
@@ -86,6 +65,7 @@ database.ref().on("child_added", function (childSnapshot) {
   // Append the new row to the table
   $("#tp-table > tbody").append(newRow);
 });
+
 
 
 //====================================================================================================================
@@ -115,12 +95,7 @@ $.ajax(settings).done(function (response) {
       console.log(availResponse);
   });
 });
-////////////////////////////////////
 */
-//sort data by long and lat in numerical order
-//match users input to sorted coords
-//find i and add i-2, i-1, i, i+1, i+2
-
 
 
 
