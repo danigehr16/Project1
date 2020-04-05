@@ -22,8 +22,8 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
 var database = firebase.database();
+var stores = firebase.database().ref("-M45lnOTyNUYYVystEzK");
 
 // 2. Button for adding TP LL
 $("#add-tp-btn").on("click", function (event) {
@@ -45,57 +45,46 @@ $("#add-tp-btn").on("click", function (event) {
 
 });
 
-
 // 3. Create Firebase event for adding TP to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function (childSnapshot) {
-  console.log(childSnapshot.val());
+  // console.log(childSnapshot.val());
 
-  // Store everything into a variable.
-  var tpstoreName = childSnapshot.val().name;
-  var tpaddress = childSnapshot.val().address;
-  var tpsku = childSnapshot.val().sku;
+  var newUserLat = childSnapshot.val().lat;
+  var newUserLong = childSnapshot.val().long;
+  
+  console.log(newUserLat)
+  console.log(newUserLong)
+ 
+  indexOfClosest();
+  // var tpstoreName = childSnapshot.val().name;
+  // var tpaddress = childSnapshot.val().address;
+  //var distance;
+
 
   // Create the new row
-  var newRow = $("<tr>").append(
-    $("<td>").text(tpstoreName),
-    $("<td>").text(tpaddress),
-    $("<td>").text(tpsku),
-  );
+  // var newRow = $("<tr>").append(
+  //   $("<td>").text(tpstoreName),
+  //   $("<td>").text(tpaddress),
+  // );
 
   // Append the new row to the table
-  $("#tp-table > tbody").append(newRow);
+  //$("#tp-table > tbody").append(newRow);
 });
 
+function indexOfClosest(stores, newUserLat) {
+  let closest = Number.MAX_SAFE_INTEGER;
+  let index = 0;
 
+  stores.forEach((latitude, i) => {
+    let dist = Math.abs(newUserLat - latitude);
 
+    if (dist < closest) {
+      index = i;
+      closest = dist;
+    }
+  });
 
-
-
-//====================================================================================================================
-//APIs
-//Milk
-/*
-var settings = {
-  "method": "GET",
-  "headers": {
-      "Subscription-Key": "C455d00cb0f64e238a5282d75921f27e",
-  }
+  return index;
 }
 
-settings.url = 'https://api.wegmans.io/products/search?query=Milk&api-version=2018-10-18';
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-
-  // Returns the link with availabilities
-  var availabilities = response.results[0]._links.find(function (link) {
-      return link.rel === "availabilities";
-  })
-
-  console.log(settings.url);
-  settings.url = `https://api.wegmans.io${availabilities.href}`
-  $.ajax(settings).done(function (availResponse) {
-      console.log(availResponse);
-  });
-});
-*/
+console.log(index);
