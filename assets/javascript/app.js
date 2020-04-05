@@ -22,32 +22,50 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-// 2. Button for adding tp searches
+
+
+// 2. Button for adding TP LL
 $("#add-tp-btn").on("click", function (event) {
   event.preventDefault();
 
-  // Grabs user input
-  //var tpstoreName = $("#store-name-input").val().trim();
-  var tpaddress = $("#address-input").val().trim();
-  //var tpsku = $("#sku-input").val().trim();
+  function getLatLon(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    console.log("Latitude is " + latitude);
+    console.log("Longitude is " + longitude);
 
-  // Creates local "temporary" object for holding tp data
-  var newTP = {
-    //name: tpstoreName,
-    address: tpaddress,
-    //sku: tpsku,
-  };
+    var newTPLL = {
+      lat: latitude,
+      long: longitude,
+    };
+    // Uploads tp data to the database
+    database.ref().push(newTPLL);
 
-  // Uploads tp data to the database
-  database.ref().push(newTP);
+    alert("TP LL successfully added");
+  }
 
-  alert("TP successfully added");
+  navigator.geolocation.getCurrentPosition(getLatLon);
 
-  // Clears all of the text-boxes
-  $("#store-name-input").val("");
-  $("#address-input").val("");
-  $("#sku-input").val("");
 });
+
+//addition of store data to Database ***************************************************
+// var store = {
+//   "url": "https://api.wegmans.io/stores?Subscription-Key=C455d00cb0f64e238a5282d75921f27e&api-version=2018-10-18",
+//   "method": "GET",
+//   "timeout": 0,
+// };
+
+// $.ajax(store).done(function (response) {
+//   console.log(response);
+//   database.ref().push(response);
+//   // for (i = 0; i < 6; i++) {
+//   //   response.stores[i].latitude;
+//   //   response.stores[i].longitude;
+//   //   console.log(response.stores[i].latitude);
+//   //   console.log(response.stores[i].longitude);
+//   // }
+// });
+
 
 // 3. Create Firebase event for adding TP to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function (childSnapshot) {
@@ -68,6 +86,8 @@ database.ref().on("child_added", function (childSnapshot) {
   // Append the new row to the table
   $("#tp-table > tbody").append(newRow);
 });
+
+
 //====================================================================================================================
 //APIs
 //Milk
@@ -97,33 +117,6 @@ $.ajax(settings).done(function (response) {
 });
 ////////////////////////////////////
 */
-//////////////////////////////////// Get Longitute & Latitude
-
-function getLatLon(position) {
-  var latitude = position.coords.latitude;
-  var longitude = position.coords.longitude;
-  console.log("Latitude is " + latitude);
-  console.log("Longitude is " + longitude);
-}
-navigator.geolocation.getCurrentPosition(getLatLon);
-
-///////////////////////////////////////////////////////////
-var store = {
-  "url": "https://api.wegmans.io/stores?Subscription-Key=C455d00cb0f64e238a5282d75921f27e&api-version=2018-10-18",
-  "method": "GET",
-  "timeout": 0,
-};
-
-$.ajax(store).done(function (response) {
-  console.log(response);
-  for (i = 0; i < 6; i++) {
-    response.stores[i].latitude;
-    response.stores[i].longitude;
-    console.log(response.stores[i].latitude);
-    console.log(response.stores[i].longitude);
-  }
-});
-
 //sort data by long and lat in numerical order
 //match users input to sorted coords
 //find i and add i-2, i-1, i, i+1, i+2
@@ -237,7 +230,6 @@ function geocode(platform) {
   var geocoder = platform.getGeocodingService(),
     geocodingParameters = {
       //this will need to be updated for the users input
-      //searchText: tpaddress,///////////////////////////////////
       searchText: tpaddress,
       jsonattributes: 1
     };
@@ -278,136 +270,95 @@ function onError(error) {
  * Boilerplate map initialization code starts below:
  */
 
-//Step 1: initialize communication with the platform
-// In your own code, replace variable window.apikey with your own apikey
+// Instantiate a map and platform object:
 var platform = new H.service.Platform({
   apikey: '8RvbLn7UTJxQGpXktdP6fVl_y5PSyDt__1K5Bt0_j_I'
 });
+// Retrieve the target element for the map:
+var targetElement = document.getElementById('mapContainer');
+
+// Get the default map types from the platform object:
 var defaultLayers = platform.createDefaultLayers();
 
-//this map is centered over the US, kansas more specifically
-var map = new H.Map(document.getElementById('map'),
-  defaultLayers.vector.normal.map, {
-  center: { lat: 39.381266, lng: -97.922211 },
-  zoom: 15,
-  pixelRatio: window.devicePixelRatio || 1
-});
-// add a resize listener to make sure that the map occupies the whole container
-window.addEventListener('resize', () => map.getViewPort().resize());
+// Instantiate the map:
+var map = new H.Map(
+  document.getElementById('mapContainer'),
+  defaultLayers.vector.normal.map,
+  {
+    zoom: 10,
+    center: { lat: 39.381266, lng: -97.922211 },
+  });
+// Create the parameters for the routing request:
+var routingParameters = {
+  // The routing mode:
+  'mode': 'fastest;car',
+  // The start point of the route:
+  'waypoint0': 'geo!50.1120423728813,8.68340740740811',
+  // The end point of the route:
+  'waypoint1': 'geo!52.5309916298853,13.3846220493377',
+  // To retrieve the shape of the route we choose the route
+  // representation mode 'display'
+  'representation': 'display'
+};
 
-var locationsContainer = document.getElementById('panel');
+// Define a callback function to process the routing response:
+var onResult = function (result) {
+  var route,
+    routeShape,
+    startPoint,
+    endPoint,
+    linestring;
+  if (result.response.route) {
+    // Pick the first route from the response:
+    route = result.response.route[0];
+    // Pick the route's shape:
+    routeShape = route.shape;
 
-//Step 3: make the map interactive
-// MapEvents enables the event system
-// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
-var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+    // Create a linestring to use as a point source for the route line
+    linestring = new H.geo.LineString();
 
-// Create the default UI components
-var ui = H.ui.UI.createDefault(map, defaultLayers);
+    // Push all the points in the shape into the linestring:
+    routeShape.forEach(function (point) {
+      var parts = point.split(',');
+      linestring.pushLatLngAlt(parts[0], parts[1]);
+    });
 
-// Hold a reference to any infobubble opened
-//we can change this icon to anything in the correct folder
-var bubble;
+    // Retrieve the mapped positions of the requested waypoints:
+    startPoint = route.waypoint[0].mappedPosition;
+    endPoint = route.waypoint[1].mappedPosition;
 
-/**
- * Opens/Closes a infobubble
- * @param  {H.geo.Point} position     The location on the map.
- * @param  {String} text              The contents of the infobubble.
- */
-function openBubble(position, text) {
-  if (!bubble) {
-    bubble = new H.ui.InfoBubble(
-      position,
-      { content: text });
-    ui.addBubble(bubble);
-  } else {
-    bubble.setPosition(position);
-    bubble.setContent(text);
-    bubble.open();
+    // Create a polyline to display the route:
+    var routeLine = new H.map.Polyline(linestring, {
+      style: { strokeColor: 'blue', lineWidth: 3 }
+    });
+
+    // Create a marker for the start point:
+    var startMarker = new H.map.Marker({
+      lat: startPoint.latitude,
+      lng: startPoint.longitude
+    });
+
+    // Create a marker for the end point:
+    var endMarker = new H.map.Marker({
+      lat: endPoint.latitude,
+      lng: endPoint.longitude
+    });
+
+    // Add the route polyline and the two markers to the map:
+    map.addObjects([routeLine, startMarker, endMarker]);
+
+    // Set the map's viewport to make the whole route visible:
+    map.getViewModel().setLookAtData({ bounds: routeLine.getBoundingBox() });
   }
-}
+};
 
-/**
- * Creates a series of list items for each location found, and adds it to the panel.
- * @param {Object[]} locations An array of locations as received from the
- *                             H.service.GeocodingService
- */
-function addLocationsToPanel(locations) {
+// Get an instance of the routing service:
+var router = platform.getRoutingService();
 
-  var nodeOL = document.createElement('ul'),
-    i;
-
-  nodeOL.style.fontSize = 'small';
-  nodeOL.style.marginLeft = '5%';
-  nodeOL.style.marginRight = '5%';
-
-
-  for (i = 0; i < locations.length; i += 1) {
-    var li = document.createElement('li'),
-      divLabel = document.createElement('div'),
-      address = locations[i].location.address,
-      content = '<strong style="font-size: large;">' + address.label + '</strong></br>';
-    position = {
-      //coordinates for locations
-      lat: locations[i].location.displayPosition.latitude,
-      lng: locations[i].location.displayPosition.longitude
-    };
-
-    //house address for user
-    content += '<strong>houseNumber:</strong> ' + address.houseNumber + '<br/>';
-    content += '<strong>street:</strong> ' + address.street + '<br/>';
-    content += '<strong>district:</strong> ' + address.district + '<br/>';
-    content += '<strong>city:</strong> ' + address.city + '<br/>';
-    content += '<strong>postalCode:</strong> ' + address.postalCode + '<br/>';
-    content += '<strong>county:</strong> ' + address.county + '<br/>';
-    content += '<strong>country:</strong> ' + address.country + '<br/>';
-    content += '<br/><strong>position:</strong> ' +
-      Math.abs(position.lat.toFixed(4)) + ((position.lat > 0) ? 'N' : 'S') +
-      ' ' + Math.abs(position.lng.toFixed(4)) + ((position.lng > 0) ? 'E' : 'W');
-
-    divLabel.innerHTML = content;
-    li.appendChild(divLabel);
-
-    nodeOL.appendChild(li);
-  }
-
-  locationsContainer.appendChild(nodeOL);
-}
-
-
-/**
- * Creates a series of H.map.Markers for each location found, and adds it to the map.
- * @param {Object[]} locations An array of locations as received from the
- *                             H.service.GeocodingService
- */
-function addLocationsToMap(locations) {
-  var group = new H.map.Group(),
-    position,
-    i;
-
-  // Add a marker for each location found
-  // this is where we can add a little tp icon
-
-  for (i = 0; i < locations.length; i += 1) {
-    position = {
-      lat: locations[i].location.displayPosition.latitude,
-      lng: locations[i].location.displayPosition.longitude
-    };
-    marker = new H.map.Marker(position);
-    marker.label = locations[i].location.address.label;
-    group.addObject(marker);
-  }
-
-  group.addEventListener('tap', function (evt) {
-    map.setCenter(evt.target.getGeometry());
-    openBubble(
-      evt.target.getGeometry(), evt.target.label);
-  }, false);
-
-  // Add the locations group to the map
-  map.addObject(group);
-  map.setCenter(group.getBoundingBox().getCenter());
-}
-
-// Now use the map as required...
-geocode(platform);
+// Call calculateRoute() with the routing parameters,
+// the callback and an error callback function (called if a
+// communication error occurs):
+router.calculateRoute(routingParameters, onResult,
+  function (error) {
+    alert(error.message);
+  });
