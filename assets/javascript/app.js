@@ -1,5 +1,7 @@
 //==========================================================================================
 // 1. Initialize Firebase
+var gLocationName;
+
 var firebaseConfig = {
   apiKey: "AIzaSyBYXHZ_u0F08l7IcwzHpf5unJe_4tYa_Wo",
   authDomain: "tp-search.firebaseapp.com",
@@ -122,33 +124,41 @@ database.ref().on("child_added", function (childSnapshot) {
       storeGeoLong: newUserStoreLong,
       storeGeoName: locationName,
     });
-
     console.log(newUserStoreInfo);
+    console.log(newUserStoreLat);
   }
 
 
 
 
-  
-
   //==========================================================================================
 
   //==========================================================================================
   //table updates
-  var tpaddress = " ";
-  var tpdistance = " ";
+  //var tpaddress = " ";
+  //var tpdistance = " ";
   var tpprice = " ";
   var tpavalibility = " ";
 
   // Create the new row
   var newRow = $("<tr>").append(
     $("<td>").text(locationName),
-    $("<td>").text(tpaddress),
-    $("<td>").text(tpdistance),
+    $("<td>").text(newUserStoreLat),
+    $("<td>").text(newUserStoreLong),
     $("<td>").text(tpprice),
     $("<td>").text(tpavalibility),
   );
 
   // //Append the new row to the table
   $("#tp-table > tbody").append(newRow);
+
+
+  var recentUserData = $("<div>");
+  recentUserData.attr("locationName", locationName);
+  recentUserData.attr("newUserStoreLat", newUserStoreLat);
+  recentUserData.attr("newUserStoreLong", newUserStoreLong);
+  $("#recentUser").append(recentUserData);
+
 });
+var gLocationName = $("#name");
+console.log(gLocationName);
