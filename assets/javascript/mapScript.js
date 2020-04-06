@@ -1,16 +1,3 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyBYXHZ_u0F08l7IcwzHpf5unJe_4tYa_Wo",
-  authDomain: "tp-search.firebaseapp.com",
-  databaseURL: "https://tp-search.firebaseio.com",
-  projectId: "tp-search",
-  storageBucket: "tp-search.appspot.com",
-  messagingSenderId: "922115969314",
-  appId: "1:922115969314:web:996eff6737bb582db1557b"
-};
-
-
-
-
 
 /**
  * A full list of available request parameters can be found in the Geocoder API documentation.
@@ -22,7 +9,7 @@ function geocode(platform) {
   var geocoder = platform.getGeocodingService(),
     geocodingParameters = {
       //this will need to be updated for the users input
-      searchText: '6203 Grey Friars Terrace, Chalfont PA, 18914',
+      searchText: locationName,
       jsonattributes : 1
     };
 
